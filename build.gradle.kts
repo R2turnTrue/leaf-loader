@@ -23,7 +23,6 @@ dependencies {
     implementation("org.spongepowered:mixin:0.8.3")
     compileOnly(files("libs/launchwrapper-1.12.jar"))
     compileOnly(files("libs/leaf.jar"))
-    implementation("org.reflections:reflections:0.9.12")
     implementation("com.google.guava:guava:21.0")
     implementation("org.ow2.asm:asm-tree:6.2")
 
@@ -55,9 +54,9 @@ abstract class Setup() : DefaultTask() {
         if(!libDir.exists())
             libDir.mkdir()
         val downloades = HashMap<File, String>()
-        downloades[File(runDir, "leaf.jar")] = "https://raw.githubusercontent.com/NamuTree0345/leaf/main/release.txt"
+        downloades[File(runDir, "leaf.jar")] = "https://raw.githubusercontent.com/WintChoco/leaf-mirror/main/latest"
         downloades[File(runDir, "launchwrapper-1.12.jar")] = "https://raw.githubusercontent.com/NamuTree0345/leaf/main/launchwrapper.txt"
-        downloades[File(libDir, "leaf.jar")] = "https://raw.githubusercontent.com/NamuTree0345/leaf/main/release.txt"
+        downloades[File(libDir, "leaf.jar")] = "https://raw.githubusercontent.com/WintChoco/leaf-mirror/main/latest"
         downloades[File(libDir, "launchwrapper-1.12.jar")] = "https://raw.githubusercontent.com/NamuTree0345/leaf/main/launchwrapper.txt"
 
         fun process(entry: MutableMap.MutableEntry<File, String>) {
@@ -126,7 +125,7 @@ tasks.register<JavaExec>("runClient") {
     classpath("run/lml-${version}-all.jar", "run/leaf.jar", "run/launchwrapper-1.12.jar")
 
     main = "net.minecraft.launchwrapper.Launch"
-    args("--tweakClass", "xyz.namutree0345.lml.LoafLoaderTweaker")
+    args("--tweakClass", "xyz.r2turntrue.lml.LoafLoaderTweaker")
 }
 
 tasks.register<Copy>("copyClient") {

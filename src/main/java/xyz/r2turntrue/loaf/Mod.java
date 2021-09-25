@@ -1,7 +1,6 @@
-package xyz.namutree0345.loaf;
+package xyz.r2turntrue.loaf;
 
 public abstract class Mod {
-
     public String name;
     public String id;
     public String version;

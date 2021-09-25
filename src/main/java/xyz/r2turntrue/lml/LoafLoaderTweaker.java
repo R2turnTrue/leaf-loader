@@ -1,4 +1,4 @@
-package xyz.namutree0345.lml;
+package xyz.r2turntrue.lml;
 
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
@@ -7,8 +7,6 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixins;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
 import java.util.List;
 
 public class LoafLoaderTweaker implements ITweaker {
@@ -29,7 +27,7 @@ public class LoafLoaderTweaker implements ITweaker {
 
     @Override
     public String getLaunchTarget() {
-        return "me.wincho.leaf.main.Main";
+        return "me.wincho.leaf.client.main.Main";
     }
 
     @Override

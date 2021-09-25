@@ -1,6 +1,6 @@
 package org.example.testmod;
 
-import xyz.namutree0345.loaf.Mod;
+import xyz.r2turntrue.loaf.Mod;
 
 public class TestMod extends Mod {
     public TestMod() {

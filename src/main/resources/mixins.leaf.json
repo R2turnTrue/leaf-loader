@@ -1,10 +1,9 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "xyz.namutree0345.lml.mixins",
+  "package": "xyz.r2turntrue.lml.mixins",
   "verbose": true,
   "mixins": [
-    "MainMenuMixin",
     "MainMixin"
   ]
 }

@@ -1,19 +1,18 @@
-package xyz.namutree0345.lml.mixins;
+package xyz.r2turntrue.lml.mixins;
 
-import me.wincho.leaf.Leaf;
-import me.wincho.leaf.main.Main;
-import org.slf4j.LoggerFactory;
-import org.spongepowered.asm.mixin.Final;
+import me.wincho.leaf.client.main.Main;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import xyz.namutree0345.lml.LoafLoader;
+import xyz.r2turntrue.lml.LoafLoader;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 
 @Mixin(Main.class)
 public class MainMixin {
@@ -23,9 +22,9 @@ public class MainMixin {
         LoafLoader.logger.info("LML Initializing...");
         LoafLoader loader = LoafLoader.getInstance();
         try {
-            loader.loadMods(new File("mods/"));
-        } catch (MalformedURLException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-            LoafLoader.logger.info("Could not load mods!");
+            loader.loadMods(Paths.get("mods"));
+        } catch (InvocationTargetException | InstantiationException | IllegalAccessException | IOException | ClassNotFoundException | URISyntaxException e) {
+            LoafLoader.logger.error("Could not load mods!");
             e.printStackTrace();
         }
     }
