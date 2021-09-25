@@ -3,7 +3,10 @@
 ## Development environment
 Windows, Mac, Linux and Java 8
 
-## How to debug
+## How to debug(NEW)
+1. run "runClient"(runServer is plan) task
+
+## How to debug(OLD)
 1. Create *leafloader* folder.
 2. Download my patched [launchwrapper-1.12-all.jar](https://github.com/NamuTree0345/LegacyLauncher/releases/download/1.12/launchwrapper-1.12-all.jar)
 3. Copy the launchwrapper to *leafloader*
