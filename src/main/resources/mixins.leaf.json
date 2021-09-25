@@ -4,6 +4,7 @@
   "package": "xyz.namutree0345.lml.mixins",
   "verbose": true,
   "mixins": [
-    "LeafMixin"
+    "MainMenuMixin",
+    "MainMixin"
   ]
 }
