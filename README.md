@@ -9,4 +9,4 @@ Windows, Mac, Linux and Java 8
 3. Copy the launchwrapper to *leafloader*
 4. Run shadowJar
 5. Copy shade-jar(loader-1.0-SNAPSHOT-all.jar) to *leafloader*
-6. Execute `java -cp leaf-default.jar;launchwrapper-1.12-all.jar;loader-1.0-SNAPSHOT-all.jar net.minecraft.launchwrapper.Launch --tweakClass xyz.namutree0345.lml.LeafModLoaderTweaker` in *leafloader* folder
+6. Execute `java -cp leaf-default.jar;launchwrapper-1.12-all.jar;loader-1.0-SNAPSHOT-all.jar net.minecraft.launchwrapper.Launch --tweakClass xyz.namutree0345.lml.LoafLoaderTweaker` in *leafloader* folder

@@ -7,9 +7,11 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixins;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.util.List;
 
-public class LeafModLoaderTweaker implements ITweaker {
+public class LoafLoaderTweaker implements ITweaker {
     @Override
     public void acceptOptions(List<String> list, File file, File file1, String s) {
 
