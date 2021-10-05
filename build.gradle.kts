@@ -8,6 +8,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.0.0"
     `kotlin-dsl`
     `java-library`
+    idea
 }
 
 group = "org.example"
@@ -77,12 +78,12 @@ abstract class Setup() : DefaultTask() {
                 stringBuffer.append(inputLine)
             }
 
-            val OUTPUT_FILE_PATH = entry.key
-            val FILE_URL = stringBuffer.toString()
+            val outputFilePath = entry.key
+            val fileUrl = stringBuffer.toString()
 
-            logger.info("[Download] ${entry.key.absolutePath} <- $FILE_URL")
-            URL(FILE_URL).openStream().use { `in` ->
-                val imagePath = Paths.get(OUTPUT_FILE_PATH.toURI())
+            logger.info("[Download] ${entry.key.absolutePath} <- $fileUrl")
+            URL(fileUrl).openStream().use { `in` ->
+                val imagePath = Paths.get(outputFilePath.toURI())
                 Files.copy(`in`, imagePath)
             }
         }

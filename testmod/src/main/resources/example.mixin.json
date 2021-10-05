@@ -1,10 +1,9 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "xyz.r2turntrue.lml.mixins",
+  "package": "org.example.testmod.mixins",
   "verbose": true,
   "mixins": [
-    "MainMixin",
-    "TitleScreenMixin"
+    "ExampleMixin"
   ]
 }

@@ -1,10 +1,16 @@
 package xyz.r2turntrue.lml;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.mixin.Mixins;
+import org.spongepowered.asm.service.MixinService;
 import xyz.r2turntrue.loaf.Mod;
+import xyz.r2turntrue.loaf.data.Author;
+import xyz.r2turntrue.loaf.data.ModID;
+import xyz.r2turntrue.loaf.data.ModOptions;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +32,7 @@ public class LoafLoader {
     public static Logger logger = LogManager.getLogger("Loaf");
     private static LoafLoader INSTANCE;
 
-    LoafLoader() {
+    private LoafLoader() {
     }
 
     public static LoafLoader getInstance() {
@@ -54,11 +60,17 @@ public class LoafLoader {
                     String[] array = cl.getResource("loaf.json").toURI().toString().split("!");
                     FileSystem fs = FileSystems.newFileSystem(URI.create(array[0]), env);
                     Path loafJson = fs.getPath(array[1]);
-                    JsonObject loafJsonContent = JsonParser.parseReader(Files.newBufferedReader(loafJson)).getAsJsonObject();
+                    JsonObject data = JsonParser.parseReader(Files.newBufferedReader(loafJson)).getAsJsonObject();
+                    List<String> mixins = new ArrayList<>();
+                    for (JsonElement mixin : data.getAsJsonArray("mixins")) {
+                        mixins.add(mixin.getAsString());
+                    }
+                    ModOptions options = new ModOptions(new ModID(data.get("id").getAsString()), data.get("name").getAsString(), data.get("version").getAsString(), Author.asJsonArray(data.getAsJsonArray("authors")), mixins);
 
-                    Class<?> loadedClass = cl.loadClass(loafJsonContent.get("main").getAsString());
+                    Class<?> loadedClass = cl.loadClass(data.get("main").getAsString());
 
                     Mod mod = (Mod) loadedClass.getConstructors()[0].newInstance();
+                    mod.setOptions(options);
                     loadedMods.add(mod);
                 }
             } catch (IOException | ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException | URISyntaxException e) {
@@ -69,8 +81,13 @@ public class LoafLoader {
 
         LoafLoader.logger.info("-- Loaded Loaf Mods --");
         for (Mod loadedMod : loadedMods) {
-            LoafLoader.logger.info("  - " + loadedMod.name + "");
+            LoafLoader.logger.info(String.format("  - %s (%s)", loadedMod.options().name(), loadedMod.options().id().asString()));
+        }
+
+        System.out.println(MixinService.getService());
+        for (Mod loadedMod : loadedMods) {
             loadedMod.init();
+            //TODO load mod mixins loadedMod.options().mixins()
         }
     }
 }

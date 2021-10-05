@@ -7,16 +7,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import xyz.r2turntrue.lml.LoafLoader;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 @Mixin(Main.class)
 public class MainMixin {
-
     @Inject(method = "main", at = @At("HEAD"))
     private static void main(CallbackInfo ci) {
         LoafLoader.logger.info("LML Initializing...");
@@ -28,5 +25,4 @@ public class MainMixin {
             e.printStackTrace();
         }
     }
-
 }

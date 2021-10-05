@@ -1,3 +1,13 @@
 {
+  "id": "loaf_test_mod",
+  "name": "Loaf Test Mod",
+  "version": "1.0",
+  "authors": [
+    "R2turnTrue",
+    "WinCho"
+  ],
+  "mixins": [
+    "example.mixin.json"
+  ],
   "main": "org.example.testmod.TestMod"
 }

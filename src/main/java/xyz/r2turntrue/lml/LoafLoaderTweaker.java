@@ -20,9 +20,9 @@ public class LoafLoaderTweaker implements ITweaker {
         MixinBootstrap.init();
 
         MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
-        Mixins.addConfiguration("mixins.leaf.json");
-
         environment.setSide(MixinEnvironment.Side.CLIENT);
+
+        Mixins.addConfiguration("mixins.leaf.json");
     }
 
     @Override
